@@ -87,9 +87,8 @@ def main():
             while not done:
                 '''Interact with Env'''
                 a, logprob_a = agent.select_action(s, deterministic=False) # use stochastic when training
-                s_next, r, done = env.step(a) # dw: dead&win; tr: truncated
-                if r <=-100: r = -30  #good for LunarLander TODO check if its not needed
-                dw = done
+                s_next, r, done, dw = env.step(a) # dw: dead&win; tr: truncated
+                #if r <=-100: r = -30  #good for LunarLander TODO check if its not needed
                 '''Store the current transition'''
                 agent.put_data(s, a, r, s_next, logprob_a, done, dw, idx = traj_lenth)
                 s = s_next

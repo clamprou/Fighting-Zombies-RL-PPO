@@ -24,7 +24,7 @@ class FightingZombiesDisc(gym.Env):
         self.agent.sleep()
         self.agent.play_action(action)
         self.agent.observe_env()
-        return np.asarray(self.agent.state), self.agent.tick_reward, not(self.agent.is_episode_running())
+        return np.asarray(self.agent.state), self.agent.tick_reward, not(self.agent.is_episode_running()), self.agent.is_alive()
 
     def render(self):
         if self.render_mode == "rgb_array":
