@@ -3,7 +3,6 @@ from malmo_agent import plot_table
 from utils import evaluate_policy, str2bool
 from datetime import datetime
 from PPO import PPO_discrete
-import gymnasium as gym
 import os, shutil
 import argparse
 import torch
@@ -19,14 +18,14 @@ parser.add_argument('--ModelIdex', type=int, default=300000, help='which model t
 
 parser.add_argument('--seed', type=int, default=209, help='random seed')
 parser.add_argument('--T_horizon', type=int, default=512, help='lenth of long trajectory')
-parser.add_argument('--Max_train_steps', type=int, default=5e7/4, help='Max training steps')
+parser.add_argument('--Max_train_steps', type=int, default=5e7, help='Max training steps')
 parser.add_argument('--save_interval', type=int, default=1e5/4, help='Model saving interval, in steps.')
 parser.add_argument('--eval_interval', type=int, default=5e3/4, help='Model evaluating interval, in steps.')
 
 parser.add_argument('--gamma', type=float, default=0.99, help='Discounted Factor')
 parser.add_argument('--lambd', type=float, default=0.95, help='GAE Factor')
-parser.add_argument('--clip_rate', type=float, default=0.2, help='PPO Clip rate')
-parser.add_argument('--K_epochs', type=int, default=10, help='PPO update times')
+parser.add_argument('--clip_rate', type=float, default=0.1, help='PPO Clip rate')
+parser.add_argument('--K_epochs', type=int, default=5, help='PPO update times')
 parser.add_argument('--net_width', type=int, default=64, help='Hidden net width')
 parser.add_argument('--lr', type=float, default=1e-4, help='Learning rate')
 parser.add_argument('--l2_reg', type=float, default=0, help='L2 regulization coefficient for Critic')
@@ -87,8 +86,9 @@ def main():
             while not done:
                 '''Interact with Env'''
                 a, logprob_a = agent.select_action(s, deterministic=False) # use stochastic when training
-                s_next, r, done, dw = env.step(a) # dw: dead&win; tr: truncated
-                #if r <=-100: r = -30  #good for LunarLander TODO check if its not needed
+                s_next, r, done, alive = env.step(a) # dw: dead&win; tr: truncated
+                dw = done and alive
+                if r <=-100: r = -100  #good for LunarLander TODO check if its not needed
                 '''Store the current transition'''
                 agent.put_data(s, a, r, s_next, logprob_a, done, dw, idx = traj_lenth)
                 s = s_next
@@ -124,8 +124,7 @@ def main():
 
             episode += 1
 
-        env.close()
-        eval_env.close()
+
 
 if __name__ == '__main__':
     main()
