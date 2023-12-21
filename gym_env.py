@@ -10,8 +10,8 @@ class FightingZombiesDisc(gym.Env):
     def __init__(self, render_mode=None, agents=1):
         self.agent = Agent(agents)
         self.render_mode = render_mode
-        self.action_space = spaces.Discrete(len(self.agent.actions))
-        self.observation_space_n = len(self.agent.state)
+        self.action_space = spaces.Box(-1,1,(4,), float)
+        self.observation_space = spaces.Box(-1,1, (len(self.agent.state),), float)
 
     def reset(self, seed=None, options=None):
         if not self.agent.first_time:
@@ -21,7 +21,6 @@ class FightingZombiesDisc(gym.Env):
 
     def step(self, action):
         self.agent.tick_reward = 0  # Restore reward per tick, since tick just started
-        self.agent.sleep()
         self.agent.play_action(action)
         self.agent.observe_env()
         return np.asarray(self.agent.state), self.agent.tick_reward, not(self.agent.is_episode_running()), self.agent.is_alive()

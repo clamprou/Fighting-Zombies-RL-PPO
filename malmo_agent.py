@@ -17,7 +17,7 @@ MS_PER_TICK = 10
 NUM_AGENTS = 1
 NUM_MOBS = 3
 UNRESPONSIVE_AGENT = 10
-UNRESPONSIVE_ZOMBIES = 1100 / MS_PER_TICK
+UNRESPONSIVE_ZOMBIES = 100
 
 
 
@@ -36,6 +36,9 @@ class Agent:
         self.client_pool = MalmoPython.ClientPool()
         self.client_pool.add(MalmoPython.ClientInfo('127.0.0.1', 10000 + agents-1))
         self.running = True
+        self.episode = 0
+        self.rewards_from_zombies = [0,0,0]
+        self.wait_for_attack = 1
         self.zombies_ids = []
         self.current_life = 20
         self.current_pos = [0, 0]
@@ -68,6 +71,7 @@ class Agent:
         self.malmo_agent.sendCommand("chat /gamerule naturalRegeneration false")
         self.malmo_agent.sendCommand("chat /gamerule doMobLoot false")
         self.malmo_agent.sendCommand("chat /difficulty 1")
+        self.malmo_agent.sendCommand("chat /effect Robot speed 99999 2")
         if self.all_zombies_died:
             self.malmo_agent.sendCommand("chat /effect Robot instant_health 20")
             # self.malmo_agent.sendCommand("chat /effect Robot minecraft:absorption 999999 1")
@@ -77,24 +81,19 @@ class Agent:
     def is_episode_running(self):
         return self.unresponsive_count > 0 and not self.all_zombies_died
 
-    def play_action(self, action_number):
-        action = self.actions[action_number]
-        if action == "attack 1":
-            self.malmo_agent.sendCommand(action)
-            time.sleep(MS_PER_TICK * 0.015)
-            self.malmo_agent.sendCommand("attack 0")
-        elif action == "turn 1" or action == "turn -1":
-            self.malmo_agent.sendCommand(action)
-            time.sleep(MS_PER_TICK * 0.00016)
-            self.malmo_agent.sendCommand("turn 0")
-        elif action == "move 1" or action == "move -1":
-            self.malmo_agent.sendCommand(action)
-            time.sleep(MS_PER_TICK * 0.0025)
-            self.malmo_agent.sendCommand("move 0")
-        elif action == "strafe 1" or action == "strafe -1":
-            self.malmo_agent.sendCommand(action)
-            time.sleep(MS_PER_TICK * 0.0032)
-            self.malmo_agent.sendCommand("strafe 0")
+    def play_action(self, action):
+        if self.episode % self.wait_for_attack == 0:
+            self.wait_for_attack = round(30 * abs(action[3])) + 1
+            self.malmo_agent.sendCommand("attack 1")
+        self.malmo_agent.sendCommand("move " + str(action[2]))
+        self.malmo_agent.sendCommand("strafe " + str(action[1]))
+        self.malmo_agent.sendCommand("turn " + str(action[0]))
+        time.sleep(0.012)
+        self.malmo_agent.sendCommand("move 0")
+        self.malmo_agent.sendCommand("strafe 0")
+        self.malmo_agent.sendCommand("turn 0")
+        self.episode += 1
+        # time.sleep(MS_PER_TICK * 0.02)
 
     def observe_env(self):
         world_state = self.malmo_agent.getWorldState()
@@ -106,7 +105,7 @@ class Agent:
 
         # If Agent is steel alive we observe the changes on the environment and calculate our own rewards
         if world_state.number_of_observations_since_last_state > 0:
-            self.tick_reward -= 0.1  # -0.1 per tick pass
+            self.tick_reward -= 0.05  # -0.1 per tick pass
             self.unresponsive_count = UNRESPONSIVE_AGENT
             ob = json.loads(world_state.observations[-1].text)
 
@@ -115,11 +114,9 @@ class Agent:
             if all(d.get('name') != 'Zombie' for d in ob["entities"]):
                 self.all_zombies_died = True
             else:  # Update Zombies position
-                k = 0
                 for d in ob["entities"]:
                     if d.get('name') == 'Zombie':
                         if d.get('id') in self.zombies_ids:
-                            k += 1
                             idx = self.zombies_ids.index(d.get('id'))
                             self.zombies_pos[idx] = [d.get('x'), d.get('z')]
                             self.zombie_yaw[idx] = d.get('yaw') % 360
@@ -127,7 +124,7 @@ class Agent:
             # Observe environment
             cur_zombies_alive = list(d.get('name') == 'Zombie' for d in ob["entities"]).count(True)
             if cur_zombies_alive - self.zombies_alive != 0:
-                self.tick_reward += 100
+                self.tick_reward += 100 * abs(cur_zombies_alive - self.zombies_alive)
             self.zombies_alive = cur_zombies_alive
             self.zombie_los_in_range = 0
             self.zombie_los = 0
@@ -144,16 +141,19 @@ class Agent:
                 if life != self.current_life:
                     self.current_life = life
                     # Here Agent got hit and lost life, so we will punish him
-                    self.tick_reward -= 5
+                    self.tick_reward -= 7
                     # print("Life changed: -5 reward")
             if "MobsKilled" in ob:
                 self.zombie_kill_score = ob[u'MobsKilled']
             if "XPos" in ob and "ZPos" in ob:
                 self.current_pos = [ob[u'XPos'], ob[u'ZPos']]
                 if ob[u'YPos'] <= 200:
+                    self.tick_reward -= 30
                     self.malmo_agent.sendCommand("chat /kill")
+            if self.current_life == 0:
+                self.unresponsive_count = 0
         elif world_state.number_of_observations_since_last_state == 0:
-            self.tick_reward -= 0.1
+            self.tick_reward -= 0.05
             self.unresponsive_count -= 1
         if self.unresponsive_count <= 0 and not self.all_zombies_died:  # Agent died but we are here one tick before episode ends, so we punish him
             self.tick_reward -= 100
@@ -284,9 +284,9 @@ class Agent:
         for _ in range(NUM_MOBS):
             self.malmo_agent.sendCommand(
                 "chat /summon Zombie "
-                + str(random.randint(7,17))
+                + str(random.randint(-9,9))
                 + " 202 "
-                + str(random.randint(-4,5))
+                + str(random.randint(-9,9))
                 + " {HealF:10.0f}"
             )
 
@@ -294,8 +294,8 @@ class Agent:
     def drawMobs(self):
         xml = ""
         for i in range(NUM_MOBS):
-            x = str(random.randint(5,11))
-            z = str(random.randint(-3,3))
+            x = str(random.randint(0,0))
+            z = str(random.randint(0,0))
             xml += '<DrawEntity x="' + x + '" y="202" z="' + z + '" type="Zombie"/>'
         return xml
 
@@ -317,31 +317,27 @@ class Agent:
             <ServerHandlers>
               <FlatWorldGenerator forceReset="''' + reset + '''" generatorString="" seed=""/>
               <DrawingDecorator>
-                <DrawLine x1="24" y1="200" z1="0" x2="24" y2="200" z2="0" type="wool" colour="ORANGE"/>
-                <DrawLine x1="23" y1="200" z1="1" x2="23" y2="200" z2="-1" type="wool" colour="ORANGE"/>
-                <DrawLine x1="22" y1="200" z1="2" x2="22" y2="200" z2="-2" type="wool" colour="ORANGE"/>
-                <DrawLine x1="21" y1="200" z1="3" x2="21" y2="200" z2="-3" type="wool" colour="ORANGE"/>
-                <DrawLine x1="20" y1="200" z1="4" x2="20" y2="200" z2="-4" type="wool" colour="ORANGE"/>
-                <DrawLine x1="19" y1="200" z1="5" x2="19" y2="200" z2="-5" type="wool" colour="ORANGE"/>
-                <DrawLine x1="18" y1="200" z1="6" x2="18" y2="200" z2="-6" type="wool" colour="ORANGE"/>
-                <DrawLine x1="17" y1="200" z1="7" x2="17" y2="200" z2="-7" type="wool" colour="ORANGE"/>
-                <DrawLine x1="16" y1="200" z1="8" x2="16" y2="200" z2="-8" type="wool" colour="ORANGE"/>
-                <DrawLine x1="15" y1="200" z1="9" x2="15" y2="200" z2="-9" type="wool" colour="ORANGE"/>
-                <DrawLine x1="14" y1="200" z1="10" x2="14" y2="200" z2="-10" type="wool" colour="ORANGE"/>
-                <DrawLine x1="13" y1="200" z1="11" x2="13" y2="200" z2="-11" type="wool" colour="ORANGE"/>
-                <DrawLine x1="12" y1="200" z1="12" x2="12" y2="200" z2="-12" type="wool" colour="ORANGE"/>
-                <DrawLine x1="11" y1="200" z1="11" x2="11" y2="200" z2="-11" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-10" y1="200" z1="10" x2="-10" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-9" y1="200" z1="10" x2="-9" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-8" y1="200" z1="10" x2="-8" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-7" y1="200" z1="10" x2="-7" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-6" y1="200" z1="10" x2="-6" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-5" y1="200" z1="10" x2="-5" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-4" y1="200" z1="10" x2="-4" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-3" y1="200" z1="10" x2="-3" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-2" y1="200" z1="10" x2="-2" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="-1" y1="200" z1="10" x2="-1" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="0" y1="200" z1="10" x2="0" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="1" y1="200" z1="10" x2="1" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="2" y1="200" z1="10" x2="2" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="3" y1="200" z1="10" x2="3" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="4" y1="200" z1="10" x2="4" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="5" y1="200" z1="10" x2="5" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="6" y1="200" z1="10" x2="6" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="7" y1="200" z1="10" x2="7" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="8" y1="200" z1="10" x2="8" y2="200" z2="-10" type="wool" colour="ORANGE"/>
+                <DrawLine x1="9" y1="200" z1="10" x2="9" y2="200" z2="-10" type="wool" colour="ORANGE"/>
                 <DrawLine x1="10" y1="200" z1="10" x2="10" y2="200" z2="-10" type="wool" colour="ORANGE"/>
-                <DrawLine x1="9" y1="200" z1="9" x2="9" y2="200" z2="-9" type="wool" colour="ORANGE"/>
-                <DrawLine x1="8" y1="200" z1="8" x2="8" y2="200" z2="-8" type="wool" colour="ORANGE"/>
-                <DrawLine x1="7" y1="200" z1="7" x2="7" y2="200" z2="-7" type="wool" colour="ORANGE"/>
-                <DrawLine x1="6" y1="200" z1="6" x2="6" y2="200" z2="-6" type="wool" colour="ORANGE"/>
-                <DrawLine x1="5" y1="200" z1="5" x2="5" y2="200" z2="-5" type="wool" colour="ORANGE"/>
-                <DrawLine x1="4" y1="200" z1="4" x2="4" y2="200" z2="-4" type="wool" colour="ORANGE"/>
-                <DrawLine x1="3" y1="200" z1="3" x2="3" y2="200" z2="-3" type="wool" colour="ORANGE"/>
-                <DrawLine x1="2" y1="200" z1="2" x2="2" y2="200" z2="-2" type="wool" colour="ORANGE"/>
-                <DrawLine x1="1" y1="200" z1="1" x2="1" y2="200" z2="-1" type="wool" colour="ORANGE"/>
-                <DrawLine x1="0" y1="200" z1="0" x2="0" y2="200" z2="0" type="wool" colour="ORANGE"/>
               </DrawingDecorator>
             </ServerHandlers>
           </ServerSection>
@@ -350,7 +346,7 @@ class Agent:
             xml += '''<AgentSection mode="Adventure">
             <Name>Robot</Name>
             <AgentStart>
-              <Placement x="''' + str(12) + '''" y="202" z="''' + str(0) + '''"/>
+              <Placement x="''' + str(0) + '''" y="202" z="''' + str(0) + '''"/>
               <Inventory>
                 <InventoryBlock quantity="1" slot="0" type="stone_sword" />
               </Inventory>
@@ -360,7 +356,7 @@ class Agent:
               <ChatCommands/>
               <MissionQuitCommands/>
                 <RewardForDamagingEntity>
-                    <Mob reward="30" type="Zombie"/>
+                    <Mob reward="50" type="Zombie"/>
                 </RewardForDamagingEntity>
               <ObservationFromNearbyEntities>
                 <Range name="entities" xrange="100" yrange="204" zrange="100"/>
