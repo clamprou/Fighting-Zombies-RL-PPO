@@ -128,7 +128,7 @@ class Critic_Model:
 
     def critic_PPO2_loss(self, values):
         def loss(y_true, y_pred):
-            LOSS_CLIPPING = 0.2
+            LOSS_CLIPPING = 0.3
             clipped_value_loss = values + K.clip(y_pred - values, -LOSS_CLIPPING, LOSS_CLIPPING)
             v_loss1 = (y_true - clipped_value_loss) ** 2
             v_loss2 = (y_true - y_pred) ** 2
@@ -155,10 +155,10 @@ class PPOAgent:
         self.EPISODES = 50000  # total episodes to train through all environments
         self.episode = 0  # used to track the episodes total count of episodes played through all thread environments
         self.max_average = 0  # when average score is above 0 model will be saved
-        self.lr = 0.001
+        self.lr = 0.0001
         self.epochs = 10  # training epochs
         self.shuffle = True
-        self.Training_batch = 512
+        self.Training_batch = 2048
         # self.optimizer = RMSprop
         self.optimizer = Adam
 
@@ -316,9 +316,10 @@ class PPOAgent:
         done, score, SAVING = False, 0, ''
         while True:
             # Instantiate or reset games memory
+            state, done, score, SAVING = self.env.reset(), False, 0, ''
+            state = np.reshape(state, [1, self.state_size[0]])
             states, next_states, actions, rewards, dones, logp_ts = [], [], [], [], [], []
             for t in range(self.Training_batch):
-                self.env.render()
                 # Actor picks an action
                 action, logp_t = self.act(state)
                 # Retrieve new state, reward, and whether the state is terminal
@@ -344,13 +345,6 @@ class PPOAgent:
 
                     state, done, score, SAVING = self.env.reset(), False, 0, ''
                     state = np.reshape(state, [1, self.state_size[0]])
-
-                    if self.episode >= 100:
-                        values = torch.tensor(self.env.agent.rewards, dtype=torch.float)
-                        means = values.unfold(0, 100, 1).mean(1).view(-1)
-                        means = torch.cat((torch.zeros(99), means))
-                        if self.episode % 100 == 0:
-                            plot_table(self.env.agent.rewards, "rewards")
 
             self.replay(states, actions, rewards, dones, next_states, logp_ts)
             if self.episode >= self.EPISODES:
@@ -439,7 +433,6 @@ class PPOAgent:
             done = False
             score = 0
             while not done:
-                self.env.render()
                 action = self.Actor.predict(state)[0]
                 state, reward, done, _ = self.env.step(action)
                 state = np.reshape(state, [1, self.state_size[0]])

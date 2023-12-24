@@ -72,8 +72,7 @@ class Agent:
         self.malmo_agent.sendCommand("chat /gamerule doMobLoot false")
         self.malmo_agent.sendCommand("chat /difficulty 1")
         self.malmo_agent.sendCommand("chat /effect Robot speed 99999 2")
-        if self.all_zombies_died:
-            self.malmo_agent.sendCommand("chat /effect Robot instant_health 20")
+        self.malmo_agent.sendCommand("chat /effect Robot instant_health 20")
             # self.malmo_agent.sendCommand("chat /effect Robot minecraft:absorption 999999 1")
         self.unresponsive_count = UNRESPONSIVE_AGENT
         self.all_zombies_died = False
@@ -105,7 +104,7 @@ class Agent:
 
         # If Agent is steel alive we observe the changes on the environment and calculate our own rewards
         if world_state.number_of_observations_since_last_state > 0:
-            self.tick_reward -= 0.05  # -0.1 per tick pass
+            self.tick_reward -= 0.1  # -0.1 per tick pass
             self.unresponsive_count = UNRESPONSIVE_AGENT
             ob = json.loads(world_state.observations[-1].text)
 
@@ -122,10 +121,10 @@ class Agent:
                             self.zombie_yaw[idx] = d.get('yaw') % 360
 
             # Observe environment
-            cur_zombies_alive = list(d.get('name') == 'Zombie' for d in ob["entities"]).count(True)
-            if cur_zombies_alive - self.zombies_alive != 0:
-                self.tick_reward += 100 * abs(cur_zombies_alive - self.zombies_alive)
-            self.zombies_alive = cur_zombies_alive
+            # cur_zombies_alive = list(d.get('name') == 'Zombie' for d in ob["entities"]).count(True)
+            # if cur_zombies_alive - self.zombies_alive != 0:
+            #     self.tick_reward += 100 * abs(cur_zombies_alive - self.zombies_alive)
+            # self.zombies_alive = cur_zombies_alive
             self.zombie_los_in_range = 0
             self.zombie_los = 0
             if u'LineOfSight' in ob:
@@ -141,19 +140,21 @@ class Agent:
                 if life != self.current_life:
                     self.current_life = life
                     # Here Agent got hit and lost life, so we will punish him
-                    self.tick_reward -= 7
+                    self.tick_reward -= 10
                     # print("Life changed: -5 reward")
             if "MobsKilled" in ob:
                 self.zombie_kill_score = ob[u'MobsKilled']
             if "XPos" in ob and "ZPos" in ob:
                 self.current_pos = [ob[u'XPos'], ob[u'ZPos']]
-                if ob[u'YPos'] <= 200:
-                    self.tick_reward -= 30
+            if "XPos" in ob or "ZPos" in ob or "YPos" in ob:
+                if ob[u'XPos'] >= 11.3 or ob[u'XPos'] <= -10.3 or ob[u'ZPos'] >= 11.3 or ob[u'ZPos'] <= -10.3 or ob[u'YPos'] <= 200:
                     self.malmo_agent.sendCommand("chat /kill")
+                    self.unresponsive_count = 0
+                    self.tick_reward -= 50
             if self.current_life == 0:
                 self.unresponsive_count = 0
         elif world_state.number_of_observations_since_last_state == 0:
-            self.tick_reward -= 0.05
+            self.tick_reward -= 0.1
             self.unresponsive_count -= 1
         if self.unresponsive_count <= 0 and not self.all_zombies_died:  # Agent died but we are here one tick before episode ends, so we punish him
             self.tick_reward -= 100
@@ -349,6 +350,10 @@ class Agent:
               <Placement x="''' + str(0) + '''" y="202" z="''' + str(0) + '''"/>
               <Inventory>
                 <InventoryBlock quantity="1" slot="0" type="stone_sword" />
+                <InventoryBlock quantity="1" slot="39" type="leather_helmet" />
+                <InventoryBlock quantity="1" slot="38" type="leather_chestplate" />
+                <InventoryBlock quantity="1" slot="37" type="leather_leggings" />
+                <InventoryBlock quantity="1" slot="36" type="leather_boots" />
               </Inventory>
             </AgentStart>
             <AgentHandlers>
@@ -359,7 +364,7 @@ class Agent:
                     <Mob reward="50" type="Zombie"/>
                 </RewardForDamagingEntity>
               <ObservationFromNearbyEntities>
-                <Range name="entities" xrange="100" yrange="204" zrange="100"/>
+                <Range name="entities" xrange="300" yrange="300" zrange="300"/>
               </ObservationFromNearbyEntities>
               <ObservationFromRay/>
               <ObservationFromFullStats/>
