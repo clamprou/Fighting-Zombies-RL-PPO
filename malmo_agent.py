@@ -350,10 +350,10 @@ class Agent:
               <Placement x="''' + str(0) + '''" y="202" z="''' + str(0) + '''"/>
               <Inventory>
                 <InventoryBlock quantity="1" slot="0" type="stone_sword" />
-                <InventoryBlock quantity="1" slot="39" type="leather_helmet" />
-                <InventoryBlock quantity="1" slot="38" type="leather_chestplate" />
-                <InventoryBlock quantity="1" slot="37" type="leather_leggings" />
-                <InventoryBlock quantity="1" slot="36" type="leather_boots" />
+                <InventoryBlock quantity="1" slot="39" type="iron_helmet" />
+                <InventoryBlock quantity="1" slot="38" type="iron_chestplate" />
+                <InventoryBlock quantity="1" slot="37" type="iron_leggings" />
+                <InventoryBlock quantity="1" slot="36" type="iron_boots" />
               </Inventory>
             </AgentStart>
             <AgentHandlers>

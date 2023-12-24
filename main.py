@@ -10,6 +10,7 @@
 #
 # ================================================================
 import os
+import statistics
 
 from malmo_agent import *
 
@@ -427,27 +428,32 @@ class PPOAgent:
 
     def test(self, test_episodes=100):  # evaluate
         self.load()
+        wins = 0
         for e in range(101):
             state = self.env.reset()
+            self.env.agent.kills.append(0)
             state = np.reshape(state, [1, self.state_size[0]])
             done = False
             score = 0
             while not done:
                 action = self.Actor.predict(state)[0]
-                state, reward, done, _ = self.env.step(action)
+                state, reward, done, won = self.env.step(action)
                 state = np.reshape(state, [1, self.state_size[0]])
                 score += reward
                 if done:
+                    if won:
+                        wins += 1
                     average, SAVING = self.PlotModel(score, e, save=False)
-                    print("episode: {}/{}, score: {}, average{}".format(e, test_episodes, score, average))
+                    print("episode: {}/{}, score: {}, average_score: {}, average_kills: {}, Win:{}".format(e, test_episodes, score, average, statistics.mean(self.env.agent.kills), won))
                     break
         self.env.close()
+        print("Wins: ", wins,"%")
 
 
 if __name__ == "__main__":
     # newest gym fixed bugs in 'BipedalWalker-v2' and now it's called 'BipedalWalker-v3'
     env_name = 'BipedalWalker-v3'
     agent = PPOAgent(env_name)
-    agent.run_batch() # train as PPO
+    # agent.run_batch() # train as PPO
     #agent.run_multiprocesses(num_worker=2)  # train PPO multiprocessed (fastest)
-    # agent.test()
+    agent.test()
