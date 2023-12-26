@@ -1,1 +1,0 @@
-Here are results of dqn algorith but trained with difficult environemt.

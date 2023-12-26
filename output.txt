@@ -2,60 +2,64 @@ C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\_distributor_init.py
 C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.TXA6YQSD3GCQQC22GEQ54J2UDCXDXHWN.gfortran-win_amd64.dll
 C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
   stacklevel=1)
-2023-12-24 22:42:50.192357: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
-2023-12-24 22:42:51.861124: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
-2023-12-24 22:42:51.878294: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+2023-12-26 12:39:34.110533: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2023-12-26 12:39:35.868816: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2023-12-26 12:39:35.890054: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
 pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
 coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
-2023-12-24 22:42:51.878529: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
-2023-12-24 22:42:51.885011: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
-2023-12-24 22:42:51.885123: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
-2023-12-24 22:42:51.885215: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
-2023-12-24 22:42:51.889335: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
-2023-12-24 22:42:51.891409: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
-2023-12-24 22:42:51.898201: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
-2023-12-24 22:42:51.898337: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2023-12-26 12:39:35.890275: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2023-12-26 12:39:35.897405: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2023-12-26 12:39:35.897523: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2023-12-26 12:39:35.897632: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2023-12-26 12:39:35.902317: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2023-12-26 12:39:35.904655: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2023-12-26 12:39:35.911451: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2023-12-26 12:39:35.911600: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
 GPUs [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\gym\logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float64
   warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
-2023-12-24 22:42:52.203918: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
+2023-12-26 12:39:36.255801: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2023-12-24 22:42:52.211708: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x24effb9a110 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
-2023-12-24 22:42:52.211924: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
-2023-12-24 22:42:52.212187: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+2023-12-26 12:39:36.263370: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x24d7f500150 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2023-12-26 12:39:36.263536: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2023-12-26 12:39:36.263775: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
 pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
 coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
-2023-12-24 22:42:52.212429: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
-2023-12-24 22:42:52.212643: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
-2023-12-24 22:42:52.212792: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
-2023-12-24 22:42:52.212913: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
-2023-12-24 22:42:52.213034: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
-2023-12-24 22:42:52.213156: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
-2023-12-24 22:42:52.213281: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
-2023-12-24 22:42:52.213414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
-2023-12-24 22:42:53.349646: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
-2023-12-24 22:42:53.349763: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
-2023-12-24 22:42:53.349828: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
-2023-12-24 22:42:53.350002: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10335 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 4070, pci bus id: 0000:2b:00.0, compute capability: 8.9)
-2023-12-24 22:42:53.352930: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x24f1589c3e0 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
-2023-12-24 22:42:53.353168: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 4070, Compute Capability 8.9
+2023-12-26 12:39:36.264027: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2023-12-26 12:39:36.264135: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2023-12-26 12:39:36.264250: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2023-12-26 12:39:36.264354: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2023-12-26 12:39:36.264466: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2023-12-26 12:39:36.264574: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2023-12-26 12:39:36.264680: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2023-12-26 12:39:36.264796: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2023-12-26 12:39:38.444275: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2023-12-26 12:39:38.444405: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2023-12-26 12:39:38.444482: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2023-12-26 12:39:38.444680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10335 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 4070, pci bus id: 0000:2b:00.0, compute capability: 8.9)
+2023-12-26 12:39:38.447880: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x24d97d2a560 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2023-12-26 12:39:38.448015: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 4070, Compute Capability 8.9
 WARNING:tensorflow:From C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\tensorflow\python\keras\engine\training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
 Instructions for updating:
 This property should not be used in TensorFlow 2.0, as updates are applied automatically.
-2023-12-24 22:42:56.098378: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
-episode: 0/100, score: 1082.555912000023, average_score: 1082.555912000023, average_kills: 0, Win:False
-episode: 1/100, score: 692.9599229999835, average_score: 887.7579175000033, average_kills: 0.6666666666666666, Win:False
-episode: 2/100, score: 555.915928999982, average_score: 777.1439213333296, average_kills: 1, Win:False
-episode: 3/100, score: 265.2039459999844, average_score: 649.1589274999933, average_kills: 1, Win:False
-episode: 4/100, score: 446.54792599998393, average_score: 608.6367271999914, average_kills: 1, Win:False
-episode: 5/100, score: 377.1839730000062, average_score: 570.0612681666605, average_kills: 1, Win:True
-episode: 6/100, score: 349.3639239999941, average_score: 538.5330761428511, average_kills: 1.0769230769230769, Win:False
-episode: 7/100, score: -179.40000000000015, average_score: 448.79144162499466, average_kills: 1.0666666666666667, Win:False
-episode: 8/100, score: 709.3559269999774, average_score: 477.74305111110385, average_kills: 0.9411764705882353, Win:False
-episode: 9/100, score: -54.14401000000015, average_score: 424.5543449999935, average_kills: 0.9473684210526315, Win:False
-episode: 10/100, score: 865.207913999977, average_score: 464.61376036362833, average_kills: 0.9047619047619048, Win:True
-episode: 11/100, score: 1075.779914999989, average_score: 515.5442732499918, average_kills: 1.0434782608695652, Win:True
-episode: 12/100, score: 705.6999129999754, average_score: 530.1716301538365, average_kills: 1.08, Win:False
+2023-12-26 12:39:41.806888: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+episode: 0/100, score: -237.15000000000003, average_score: -237.15000000000003, average_kills: 0, Win:False
+episode: 1/100, score: -274.0999999999996, average_score: -255.62499999999983, average_kills: 0, Win:False
+episode: 2/100, score: -240.0, average_score: -250.41666666666654, average_kills: 0, Win:False
+episode: 3/100, score: -170.94999999999982, average_score: -230.54999999999987, average_kills: 0, Win:False
+episode: 4/100, score: -264.9999999999999, average_score: -237.43999999999988, average_kills: 0, Win:False
+episode: 5/100, score: -253.89999999999998, average_score: -240.18333333333325, average_kills: 0, Win:False
+episode: 6/100, score: -254.64999999999992, average_score: -242.24999999999991, average_kills: 0, Win:False
+episode: 7/100, score: -243.19999999999996, average_score: -242.36874999999992, average_kills: 0, Win:False
+episode: 8/100, score: -264.5499999999997, average_score: -244.83333333333323, average_kills: 0, Win:False
+episode: 9/100, score: -240.2999999999999, average_score: -244.37999999999988, average_kills: 0, Win:False
+episode: 10/100, score: -297.4999999999998, average_score: -249.20909090909075, average_kills: 0, Win:False
+episode: 11/100, score: -262.49999999999983, average_score: -250.31666666666652, average_kills: 0, Win:False
+episode: 12/100, score: -183.21400799999986, average_score: -245.15492369230756, average_kills: 0, Win:False
+episode: 13/100, score: -243.24999999999994, average_score: -245.0188577142856, average_kills: 0, Win:False
+episode: 14/100, score: -259.04999999999995, average_score: -245.9542671999999, average_kills: 0, Win:False
+episode: 15/100, score: -269.2499999999999, average_score: -247.4102504999999, average_kills: 0, Win:False
+episode: 16/100, score: -251.70000000000005, average_score: -247.66258870588226, average_kills: 0, Win:False
 Traceback (most recent call last):
   File "C:\Users\chris\Desktop\Ptixiaki\Projects\Fighting-Zombies-RL-PPO\main.py", line 459, in <module>
     agent.test()
@@ -63,6 +67,6 @@ Traceback (most recent call last):
     state, reward, done, won = self.env.step(action)
   File "C:\Users\chris\Desktop\Ptixiaki\Projects\Fighting-Zombies-RL-PPO\gym_env.py", line 24, in step
     self.agent.play_action(action)
-  File "C:\Users\chris\Desktop\Ptixiaki\Projects\Fighting-Zombies-RL-PPO\malmo_agent.py", line 90, in play_action
+  File "C:\Users\chris\Desktop\Ptixiaki\Projects\Fighting-Zombies-RL-PPO\malmo_agent.py", line 101, in play_action
     time.sleep(0.015)
 KeyboardInterrupt
