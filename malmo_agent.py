@@ -130,6 +130,8 @@ class Agent:
                             idx = self.zombies_ids.index(d.get('id'))
                             self.zombies_pos[idx] = [d.get('x'), d.get('z')]
                             self.zombie_yaw[idx] = d.get('yaw') % 360
+                            if d.get('x') >= 11.3 or d.get('x') <= -10.3 or d.get('z') >= 11.3 or d.get('z') <= -10.3 or d.get('y') <= 200: # if they are located out of the platform give agent more reward
+                                print("Zombie out")
 
             # Observe environment
             # cur_zombies_alive = list(d.get('name') == 'zombie' for d in ob["entities"]).count(True)
@@ -299,7 +301,7 @@ class Agent:
                 + str(random.randint(-9,9))
                 + " 202 "
                 + str(random.randint(-9,9))
-
+                + " {HealF:10.0f}"
             )
 
 
