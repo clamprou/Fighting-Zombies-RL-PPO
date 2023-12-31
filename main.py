@@ -447,12 +447,12 @@ class PPOAgent:
                     print("episode: {}/{}, score: {}, average_score: {}, average_kills: {}, Win:{}".format(e, test_episodes, score, average, statistics.mean(self.env.agent.kills), won))
                     break
         self.env.close()
-        print("Wins: ", wins,"%")
+        print("Wins: ", wins,"%", "| Zombies Killed: ", (sum(self.env.agent.kills)/300) * 100, "%") # 300 all them zombies spawned: 3 zombies per episode x 100 episodes
 
 
 if __name__ == "__main__":
     # newest gym fixed bugs in 'BipedalWalker-v2' and now it's called 'BipedalWalker-v3'
-    env_name = 'BipedalWalker-v3'
+    env_name = 'FightingZombies'
     agent = PPOAgent(env_name)
     # agent.run_batch() # train as PPO
     #agent.run_multiprocesses(num_worker=2)  # train PPO multiprocessed (fastest)
