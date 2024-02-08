@@ -1,0 +1,1 @@
+Bad results with learing rate 0.001

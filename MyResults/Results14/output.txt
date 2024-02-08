@@ -1,0 +1,97 @@
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\_distributor_init.py:32: UserWarning: loaded more than 1 DLL from .libs:
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.TXA6YQSD3GCQQC22GEQ54J2UDCXDXHWN.gfortran-win_amd64.dll
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  stacklevel=1)
+2024-01-16 00:40:56.287202: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-16 00:40:57.794133: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2024-01-16 00:40:57.816095: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
+coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
+2024-01-16 00:40:57.816295: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-16 00:40:57.822430: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2024-01-16 00:40:57.822539: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2024-01-16 00:40:57.822624: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2024-01-16 00:40:57.826529: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2024-01-16 00:40:57.828472: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+GPUs [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+2024-01-16 00:40:57.835448: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2024-01-16 00:40:57.835571: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\gym\logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float64
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+WARNING:tensorflow:From C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\tensorflow\python\keras\engine\training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+This property should not be used in TensorFlow 2.0, as updates are applied automatically.
+2024-01-16 00:41:02.144791: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-16 00:41:02.152185: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1d8b6d7fb60 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2024-01-16 00:41:02.152337: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2024-01-16 00:41:02.152562: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties: 
+pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
+coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
+2024-01-16 00:41:02.152854: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-16 00:41:02.153169: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2024-01-16 00:41:02.153302: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2024-01-16 00:41:02.153475: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2024-01-16 00:41:02.153679: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2024-01-16 00:41:02.153844: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2024-01-16 00:41:02.154017: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2024-01-16 00:41:02.154197: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2024-01-16 00:41:03.249758: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-16 00:41:03.249874: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0 
+2024-01-16 00:41:03.249949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N 
+2024-01-16 00:41:03.250149: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10335 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 4070, pci bus id: 0000:2b:00.0, compute capability: 8.9)
+2024-01-16 00:41:03.252900: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x1d90a22d630 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-01-16 00:41:03.253192: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 4070, Compute Capability 8.9
+2024-01-16 00:41:03.291213: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+episode: 1/50000, score: -170.5, average: -170.50 
+episode: 2/50000, score: -241.69999999999987, average: -206.10 
+episode: 3/50000, score: -261.6999999999998, average: -224.63 
+episode: 4/50000, score: -123.93200500000005, average: -199.46 
+episode: 5/50000, score: -195.00000000000006, average: -198.57 
+episode: 6/50000, score: -188.60000000000008, average: -196.91 
+episode: 7/50000, score: 29.40000000000012, average: -164.58 
+episode: 8/50000, score: -198.30000000000004, average: -168.79 
+episode: 9/50000, score: -197.8, average: -172.01 
+episode: 10/50000, score: -168.20000000000002, average: -171.63 
+episode: 11/50000, score: -218.00000000000006, average: -175.85 
+episode: 12/50000, score: -178.17600600000003, average: -176.04 
+episode: 13/50000, score: 15.155999000000179, average: -161.33 
+episode: 14/50000, score: -218.50000000000006, average: -165.42 
+episode: 15/50000, score: -198.40000000000003, average: -167.62 
+episode: 16/50000, score: -180.70000000000007, average: -168.43 
+episode: 17/50000, score: -239.5999999999999, average: -172.62 
+episode: 18/50000, score: -230.2, average: -175.82 
+episode: 19/50000, score: -169.20000000000002, average: -175.47 
+episode: 20/50000, score: -207.90000000000006, average: -177.09 
+episode: 21/50000, score: -172.40000000000006, average: -176.87 
+episode: 22/50000, score: -153.70000000000002, average: -175.82 
+episode: 23/50000, score: -119.64400500000008, average: -173.37 
+episode: 24/50000, score: -164.54400500000003, average: -173.01 
+episode: 25/50000, score: -209.00000000000003, average: -174.45 
+episode: 26/50000, score: -222.9079999999999, average: -176.31 
+episode: 27/50000, score: -156.62800500000006, average: -175.58 
+episode: 28/50000, score: -158.50000000000003, average: -174.97 
+episode: 29/50000, score: -205.00000000000003, average: -176.01 
+episode: 30/50000, score: -161.10000000000002, average: -175.51 
+episode: 31/50000, score: -283.1999999999997, average: -178.98 
+episode: 32/50000, score: -179.50000099999997, average: -179.00 
+episode: 33/50000, score: -113.74400600000006, average: -177.02 
+episode: 34/50000, score: -216.40000000000006, average: -178.18 
+episode: 35/50000, score: -147.70000000000002, average: -177.31 
+episode: 36/50000, score: -216.00000000000006, average: -178.38 
+episode: 37/50000, score: -166.30000000000004, average: -178.06 
+episode: 38/50000, score: -207.20000000000005, average: -178.82 
+episode: 39/50000, score: -105.40800400000005, average: -176.94 
+episode: 40/50000, score: -292.59999999999957, average: -179.83 
+episode: 41/50000, score: -217.60000000000008, average: -180.75 
+episode: 42/50000, score: -179.70000000000002, average: -180.73 
+episode: 43/50000, score: -198.90000000000003, average: -181.15 
+episode: 44/50000, score: -206.30000000000004, average: -181.72 
+episode: 45/50000, score: -216.70000000000005, average: -182.50 
+episode: 46/50000, score: -216.50000000000006, average: -183.24 
+episode: 47/50000, score: -188.50000000000003, average: -183.35 
+episode: 48/50000, score: -226.3, average: -184.25 
+episode: 49/50000, score: -197.8, average: -184.52 
+episode: 50/50000, score: -248.8999999999999, average: -185.81 
+episode: 51/50000, score: -238.39999999999995, average: -187.17 
+episode: 52/50000, score: -179.576005, average: -185.93 

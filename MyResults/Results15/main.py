@@ -97,14 +97,14 @@ class PPOAgent:
         # Initialization
         # Environment and PPO parameters
         self.env_name = env_name
-        self.env = FightingZombiesDisc()
+        self.env = FightingZombiesDisc(agents=3)
         self.action_size = self.env.action_space.shape[0]
         self.state_size = self.env.observation_space.shape
         self.EPISODES = 50000  # total episodes to train through all environments
         self.episode = 0  # used to track the episodes total count of episodes played through all thread environments
         self.max_average = 0  # when average score is above 0 model will be saved
         self.lr = 0.0001
-        self.epochs = 80  # training epochs
+        self.epochs = 20  # training epochs
         self.shuffle = True
         self.Training_batch = 2048
         self.optimizer = Adam

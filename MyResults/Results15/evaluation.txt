@@ -1,0 +1,150 @@
+C:\Users\chris\anaconda3\envs\marlo\python.exe C:\Users\chris\Desktop\Ptixiaki\Projects\Fighting-Zombies-RL-PPO2\main.py
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\_distributor_init.py:32: UserWarning: loaded more than 1 DLL from .libs:
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.TXA6YQSD3GCQQC22GEQ54J2UDCXDXHWN.gfortran-win_amd64.dll
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\numpy\.libs\libopenblas.XWYDX2IKJW2NMTWSFYNGFUWKQU3LYTCZ.gfortran-win_amd64.dll
+  stacklevel=1)
+2024-01-17 00:09:31.003286: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-17 00:09:32.615876: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library nvcuda.dll
+2024-01-17 00:09:32.631159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties:
+pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
+coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
+2024-01-17 00:09:32.631356: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-17 00:09:32.634335: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2024-01-17 00:09:32.634452: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2024-01-17 00:09:32.634571: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2024-01-17 00:09:32.637159: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2024-01-17 00:09:32.638796: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2024-01-17 00:09:32.642965: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2024-01-17 00:09:32.643083: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+GPUs [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\gym\logger.py:30: UserWarning: WARN: Box bound precision lowered by casting to float64
+  warnings.warn(colorize('%s: %s'%('WARN', msg % args), 'yellow'))
+2024-01-17 00:09:32.951498: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN)to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-17 00:09:32.958226: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x2617defc350 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2024-01-17 00:09:32.958389: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2024-01-17 00:09:32.958698: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1716] Found device 0 with properties:
+pciBusID: 0000:2b:00.0 name: NVIDIA GeForce RTX 4070 computeCapability: 8.9
+coreClock: 2.505GHz coreCount: 46 deviceMemorySize: 11.99GiB deviceMemoryBandwidth: 469.43GiB/s
+2024-01-17 00:09:32.958931: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudart64_101.dll
+2024-01-17 00:09:32.959048: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+2024-01-17 00:09:32.959176: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cufft64_10.dll
+2024-01-17 00:09:32.959284: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library curand64_10.dll
+2024-01-17 00:09:32.959387: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusolver64_10.dll
+2024-01-17 00:09:32.959488: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cusparse64_10.dll
+2024-01-17 00:09:32.959604: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cudnn64_7.dll
+2024-01-17 00:09:32.959735: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1858] Adding visible gpu devices: 0
+2024-01-17 00:09:33.968595: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1257] Device interconnect StreamExecutor with strength 1 edge matrix:
+2024-01-17 00:09:33.968708: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1263]      0
+2024-01-17 00:09:33.968768: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1276] 0:   N
+2024-01-17 00:09:33.968976: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1402] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10335 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce RTX 4070, pci bus id: 0000:2b:00.0, compute capability: 8.9)
+2024-01-17 00:09:33.972591: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x26198614770 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2024-01-17 00:09:33.972735: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): NVIDIA GeForce RTX 4070, Compute Capability 8.9
+WARNING:tensorflow:From C:\Users\chris\anaconda3\envs\marlo\lib\site-packages\tensorflow\python\keras\engine\training_v1.py:2070: Model.state_updates (from tensorflow.python.keras.engine.training) is deprecated and will be removed in a future version.
+Instructions for updating:
+This property should not be used in TensorFlow 2.0, as updates are applied automatically.
+2024-01-17 00:09:37.669506: I tensorflow/stream_executor/platform/default/dso_loader.cc:48] Successfully opened dynamic library cublas64_10.dll
+episode: 0/100, score: 360.75996299999406, average_score: 360.75996299999406, average_kills: 0, Win:False
+episode: 1/100, score: 608.8959549999933, average_score: 484.82795899999365, average_kills: 0.6666666666666666, Win:True
+episode: 2/100, score: -151.79999999999998, average_score: 272.6186393333291, average_kills: 1, Win:False
+episode: 3/100, score: -152.2, average_score: 166.41397949999686, average_kills: 0.7142857142857143, Win:False
+episode: 4/100, score: 245.77198299999694, average_score: 182.28558019999687, average_kills: 0.5555555555555556, Win:False
+episode: 5/100, score: 323.9599949999972, average_score: 205.89798266666358, average_kills: 0.5454545454545454, Win:False
+episode: 6/100, score: 584.5119629999949, average_score: 259.9856941428538, average_kills: 0.6923076923076923, Win:True
+episode: 7/100, score: 634.3199649999937, average_score: 306.7774779999963, average_kills: 0.8, Win:True
+episode: 8/100, score: -26.320020999999144, average_score: 269.76664477777456, average_kills: 0.8823529411764706, Win:False
+episode: 9/100, score: 507.76795299998594, average_score: 293.5667755999957, average_kills: 0.7894736842105263, Win:True
+episode: 10/100, score: 422.69195999999624, average_score: 305.3054287272685, average_kills: 0.8571428571428571, Win:False
+episode: 11/100, score: -227.20000000000005, average_score: 260.9299763333295, average_kills: 0.8260869565217391, Win:False
+episode: 12/100, score: 527.1599549999967, average_score: 281.4092054615346, average_kills: 0.76, Win:True
+episode: 13/100, score: 789.6079619999941, average_score: 317.7091166428532, average_kills: 0.8148148148148148, Win:True
+episode: 14/100, score: 349.0319579999973, average_score: 319.7973060666628, average_kills: 0.8620689655172413, Win:False
+episode: 15/100, score: -40.28402599999933, average_score: 297.29222281249645, average_kills: 0.8387096774193549, Win:False
+episode: 16/100, score: 640.9519499999947, average_score: 317.5075008823493, average_kills: 0.7878787878787878, Win:True
+episode: 17/100, score: 317.5399619999969, average_score: 317.50930427777416, average_kills: 0.8285714285714286, Win:False
+episode: 18/100, score: 45.35596699999908, average_score: 303.1854444210492, average_kills: 0.8108108108108109, Win:False
+episode: 19/100, score: 250.31196899999773, average_score: 300.54177064999664, average_kills: 0.7948717948717948, Win:False
+episode: 20/100, score: 619.8479349999908, average_score: 315.74682609523444, average_kills: 0.7804878048780488, Win:True
+episode: 21/100, score: 318.0679789999989, average_score: 315.85233304545096, average_kills: 0.813953488372093, Win:False
+episode: 22/100, score: 334.011960999994, average_score: 316.6418820869529, average_kills: 0.8, Win:False
+episode: 23/100, score: 404.83196199999827, average_score: 320.31646874999643, average_kills: 0.8085106382978723, Win:False
+episode: 24/100, score: 496.33997799999304, average_score: 327.35740911999625, average_kills: 0.7959183673469388, Win:True
+episode: 25/100, score: 673.1479519999956, average_score: 340.6570453846116, average_kills: 0.8235294117647058, Win:True
+episode: 26/100, score: 576.1519399999929, average_score: 349.3790785185146, average_kills: 0.8490566037735849, Win:False
+episode: 27/100, score: 676.3519419999922, average_score: 361.0566807857102, average_kills: 0.8545454545454545, Win:True
+episode: 28/100, score: 593.6759689999953, average_score: 369.07803555172006, average_kills: 0.8771929824561403, Win:True
+episode: 29/100, score: 299.3559629999977, average_score: 366.7539664666627, average_kills: 0.8983050847457628, Win:False
+episode: 30/100, score: -235.2, average_score: 347.33609658064125, average_kills: 0.8852459016393442, Win:False
+episode: 31/100, score: 415.6359419999941, average_score: 349.47046674999604, average_kills: 0.8571428571428571, Win:False
+episode: 32/100, score: 212.09197699999513, average_score: 345.3074822121172, average_kills: 0.8615384615384616, Win:False
+episode: 33/100, score: 333.58796199999574, average_score: 344.96279044117244, average_kills: 0.8507462686567164, Win:False
+episode: 34/100, score: 459.55197499999474, average_score: 348.2367671428531, average_kills: 0.855072463768116, Win:False
+episode: 35/100, score: -196.8, average_score: 333.09685694444056, average_kills: 0.8591549295774648, Win:False
+episode: 36/100, score: -188.00000000000006, average_score: 319.0131581081043, average_kills: 0.8356164383561644, Win:False
+episode: 37/100, score: 189.99997499999532, average_score: 315.6180743421014, average_kills: 0.8133333333333334, Win:False
+episode: 38/100, score: 580.7679549999929, average_score: 322.4167892307653, average_kills: 0.7922077922077922, Win:True
+episode: 39/100, score: -167.7, average_score: 310.16386949999617, average_kills: 0.810126582278481, Win:False
+episode: 40/100, score: 414.7159569999918, average_score: 312.7139204146302, average_kills: 0.7901234567901234, Win:False
+episode: 41/100, score: 152.023955999997, average_score: 308.88796888094845, average_kills: 0.7951807228915663, Win:False
+episode: 42/100, score: 648.0439409999942, average_score: 316.77531706976345, average_kills: 0.788235294117647, Win:True
+episode: 43/100, score: -175.7, average_score: 305.5826962272688, average_kills: 0.8045977011494253, Win:False
+episode: 44/100, score: 569.5159429999978, average_score: 311.447879488885, average_kills: 0.7865168539325843, Win:False
+episode: 45/100, score: 591.975956999997, average_score: 317.5463159565179, average_kills: 0.7802197802197802, Win:True
+episode: 46/100, score: -184.8, average_score: 306.8580964680814, average_kills: 0.7956989247311828, Win:False
+episode: 47/100, score: 290.6879829999973, average_score: 306.521219104163, average_kills: 0.7789473684210526, Win:False
+episode: 48/100, score: 241.39195999999257, average_score: 305.1920505510166, average_kills: 0.7835051546391752, Win:False
+episode: 49/100, score: 770.195929999993, average_score: 314.4921281399961, average_kills: 0.7878787878787878, Win:True
+episode: 50/100, score: -122.70801600000004, average_score: 304.8227685599962, average_kills: 0.801980198019802, Win:False
+episode: 51/100, score: -136.400008, average_score: 289.91684929999633, average_kills: 0.7864077669902912, Win:False
+episode: 52/100, score: 609.6279579999926, average_score: 305.1454084599962, average_kills: 0.7714285714285715, Win:False
+episode: 53/100, score: 254.28397099999532, average_score: 313.2750878799961, average_kills: 0.7757009345794392, Win:False
+episode: 54/100, score: 753.3799389999933, average_score: 323.42724699999604, average_kills: 0.7798165137614679, Win:True
+episode: 55/100, score: 176.64399500000133, average_score: 320.48092699999614, average_kills: 0.7927927927927928, Win:True
+episode: 56/100, score: 391.1879409999933, average_score: 316.61444655999605, average_kills: 0.7876106194690266, Win:False
+episode: 57/100, score: 388.4519499999964, average_score: 311.6970862599961, average_kills: 0.782608695652174, Win:False
+episode: 58/100, score: 782.1559229999946, average_score: 327.866605139996, average_kills: 0.7863247863247863, Win:True
+episode: 59/100, score: 710.9519609999973, average_score: 331.9302852999962, average_kills: 0.7983193277310925, Win:True
+episode: 60/100, score: 49.567979000001, average_score: 324.46780567999633, average_kills: 0.8099173553719008, Win:False
+episode: 61/100, score: 236.89197899999394, average_score: 333.74964525999616, average_kills: 0.7967479674796748, Win:False
+episode: 62/100, score: -125.16400800000005, average_score: 320.7031659999963, average_kills: 0.792, Win:False
+episode: 63/100, score: -82.20401199999952, average_score: 303.26692651999645, average_kills: 0.7795275590551181, Win:False
+episode: 64/100, score: -46.22402299999911, average_score: 295.36180689999657, average_kills: 0.7674418604651163, Win:False
+episode: 65/100, score: 474.73196399999654, average_score: 305.66212669999646, average_kills: 0.7557251908396947, Win:False
+episode: 66/100, score: -154.7, average_score: 289.74908769999655, average_kills: 0.7593984962406015, Win:False
+episode: 67/100, score: -215.3, average_score: 279.09228845999667, average_kills: 0.7481481481481481, Win:False
+episode: 68/100, score: 338.9839479999928, average_score: 284.9648480799966, average_kills: 0.7372262773722628, Win:False
+episode: 69/100, score: 272.4159799999951, average_score: 285.4069282999965, average_kills: 0.7410071942446043, Win:False
+episode: 70/100, score: 151.41996699999842, average_score: 276.0383689399966, average_kills: 0.7446808510638298, Win:False
+episode: 71/100, score: -143.40000000000003, average_score: 266.8090093599966, average_kills: 0.7412587412587412, Win:False
+episode: 72/100, score: 330.7239479999953, average_score: 266.74324909999666, average_kills: 0.7310344827586207, Win:False
+episode: 73/100, score: 566.139940999993, average_score: 269.96940867999655, average_kills: 0.7551020408163265, Win:False
+episode: 74/100, score: 655.4239439999908, average_score: 273.15108799999655, average_kills: 0.7583892617449665, Win:True
+episode: 75/100, score: 397.8799449999942, average_score: 267.6457278599965, average_kills: 0.7682119205298014, Win:False
+episode: 76/100, score: 203.38396799999637, average_score: 260.1903684199965, average_kills: 0.7647058823529411, Win:False
+episode: 77/100, score: -195.9, average_score: 242.74532957999662, average_kills: 0.7677419354838709, Win:False
+episode: 78/100, score: 498.79196499999296, average_score: 240.84764949999663, average_kills: 0.7579617834394905, Win:False
+episode: 79/100, score: 279.8119659999966, average_score: 240.45676955999662, average_kills: 0.7610062893081762, Win:False
+episode: 80/100, score: 375.8639749999967, average_score: 252.67804905999657, average_kills: 0.7577639751552795, Win:False
+episode: 81/100, score: -153.1, average_score: 241.30333021999667, average_kills: 0.754601226993865, Win:False
+episode: 82/100, score: 603.855961999993, average_score: 249.13860991999653, average_kills: 0.7454545454545455, Win:True
+episode: 83/100, score: 544.3719549999945, average_score: 253.35428977999655, average_kills: 0.7544910179640718, Win:False
+episode: 84/100, score: 769.1439209999952, average_score: 259.54612869999664, average_kills: 0.757396449704142, Win:True
+episode: 85/100, score: 115.72396700000073, average_score: 265.7966080399966, average_kills: 0.7660818713450293, Win:False
+episode: 86/100, score: -156.0, average_score: 266.43660803999654, average_kills: 0.7630057803468208, Win:False
+episode: 87/100, score: 456.6599559999926, average_score: 271.76980765999656, average_kills: 0.7542857142857143, Win:False
+episode: 88/100, score: 397.3679559999978, average_score: 268.1018076799967, average_kills: 0.7570621468926554, Win:False
+episode: 89/100, score: 606.0159629999968, average_score: 283.5761269399966, average_kills: 0.7597765363128491, Win:True
+episode: 90/100, score: -93.93200599999986, average_score: 273.40316767999684, average_kills: 0.7679558011049724, Win:False
+episode: 91/100, score: 244.08797699999846, average_score: 275.2444480999969, average_kills: 0.7595628415300546, Win:False
+episode: 92/100, score: 281.5559739999977, average_score: 267.9146887599969, average_kills: 0.7567567567567568, Win:False
+episode: 93/100, score: 625.763957999996, average_score: 283.94396791999685, average_kills: 0.7540106951871658, Win:True
+episode: 94/100, score: 621.3519709999947, average_score: 284.98068847999673, average_kills: 0.7619047619047619, Win:True
+episode: 95/100, score: 264.1119559999953, average_score: 278.4234084599967, average_kills: 0.7696335078534031, Win:False
+episode: 96/100, score: 314.1759429999955, average_score: 288.40292731999665, average_kills: 0.7668393782383419, Win:False
+episode: 97/100, score: 597.111957999996, average_score: 294.5314068199966, average_kills: 0.7692307692307693, Win:True
+episode: 98/100, score: 719.1639399999959, average_score: 304.0868464199967, average_kills: 0.7766497461928934, Win:True
+episode: 99/100, score: 226.72399399999765, average_score: 293.2174076999967, average_kills: 0.7839195979899497, Win:False
+episode: 100/100, score: 318.32796099999473, average_score: 302.03812723999664, average_kills: 0.7810945273631841, Win:False
+Wins:  28 % | Zombies Killed:  52.33333333333333 %
+
+Process finished with exit code 0

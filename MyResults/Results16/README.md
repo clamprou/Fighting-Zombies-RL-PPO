@@ -1,0 +1,1 @@
+Ok Results with 80 epochs

@@ -1,0 +1,1 @@
+Medium results with 20 epochs

@@ -1,0 +1,1 @@
+Ok results with network: 1024 512 256 64

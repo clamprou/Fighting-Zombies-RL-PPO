@@ -103,8 +103,8 @@ class PPOAgent:
         self.EPISODES = 50000  # total episodes to train through all environments
         self.episode = 0  # used to track the episodes total count of episodes played through all thread environments
         self.max_average = 0  # when average score is above 0 model will be saved
-        self.lr = 0.0001
-        self.epochs = 80  # training epochs
+        self.lr = 0.001
+        self.epochs = 10  # training epochs
         self.shuffle = True
         self.Training_batch = 2048
         self.optimizer = Adam
