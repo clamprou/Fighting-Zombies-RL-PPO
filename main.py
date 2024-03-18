@@ -288,6 +288,8 @@ class PPOAgent:
                           format(e, test_episodes, score, average, statistics.mean(self.env.agent.kills), won))
                     break
         self.env.close()
+        plot_table(self.env.agent.player_life, "life", show_result=True)
+        print(self.env.agent.player_life)
         print("Wins: ", wins,"%", "| Zombies Killed: ", (sum(self.env.agent.kills)/300) * 100, "%")
         # 300 all them zombies spawned: 3 zombies per episode x 100 episodes
 
