@@ -41,4 +41,4 @@ Following training, the agent demonstrates acceptable performance against the zo
 * **72%** win rate
 * **13.86** average life (with 20 being the maximum)
 
-![Results.png](MyResults%2FResults.png "Results")
+![FightingZombies-Training.png](MyResults%2FResults11%2FFightingZombies-Training.png)
